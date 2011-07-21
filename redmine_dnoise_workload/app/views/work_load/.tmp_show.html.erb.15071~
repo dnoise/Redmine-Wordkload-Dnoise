@@ -1,0 +1,320 @@
+<%
+@gantt.view = self
+subject_width = 330
+header_heigth = 18
+headers_height = header_heigth
+show_weeks = true
+show_days = true
+headers_height = 3*header_heigth
+zoom = 4
+@gantt.zoom.times { zoom = zoom * 2 }
+g_width = (@gantt.date_to - @gantt.date_from + 1)*zoom
+g_height = [(20 * (10 + 6))+150, 206].max
+t_height = g_height + headers_height
+calculos = {}
+
+%>
+<h2>Workload <%=@gantt.date_from %> <%=@total_days %> <%=@num_semanas %></h2>
+		<form method="post" id="query_form" action="/issues/gantt">
+			<div style="margin:0;padding:0;display:inline">
+				<input type="hidden" value="put" name="_method">
+				<input type="hidden" value="IOpS/ElkpZOai3ycE+TLRKJ3kIEXp/IAfdoego3j9LQ=" name="authenticity_token">
+			</div>
+				<input type="hidden" value="nafacebook" name="project_id" id="project_id">
+			<fieldset class="collapsible" id="filters">
+					<legend onClick="toggleFieldset(this);">Filtros</legend>
+				<div>
+					<table width="100%">
+						<tr>
+							<td>
+								<table>
+									<tr class="filter" id="tr_status_id">
+										<td style="width:200px;">
+											<input type="checkbox" value="status_id" onClick="toggle_filter('status_id');" name="fields[]" id="cb_status_id" checked="checked">
+											<label for="cb_status_id">Estado</label>
+											</td>
+										<td style="width:150px;">
+											<select style="vertical-align: top;" onChange="toggle_operator('status_id');" name="operators[status_id]" id="operators_status_id" class="select-small">
+												<option selected="selected" value="o">abierta</option>
+												<option value="=">igual</option>
+												<option value="!">no igual</option>
+												<option value="c">cerrada</option>
+												<option value="*">todos</option>
+											</select>
+										</td>
+										
+									</tr>
+								</table>
+							</td>
+							<td class="add-filter">
+								<label for="add_filter_select">A&ntilde;adir el filtro</label>:
+								<select onChange="add_filter();" id="add_filter_select" class="select-small">
+									<option value=""></option>
+									<option value="tracker_id">Tipo</option>
+									<option value="priority_id">Prioridad</option>
+									<option value="assigned_to_id">Asignado a</option>
+									<option value="author_id">Autor</option>
+									<option value="member_of_group">Asignado al grupo</option>
+									<option value="assigned_to_role">Asignado al perfil</option>
+									<option value="subject">Tema</option>
+									<option value="created_on">Creado</option>
+									<option value="updated_on">Actualizado</option>
+									<option value="start_date">Fecha de inicio</option>
+									<option value="due_date">Fecha fin</option>
+									<option value="estimated_hours">Tiempo estimado</option>
+									<option value="done_ratio">% Realizado</option>
+									<option value="deliverable_id">Entregable</option>
+									<option value="watcher_id">Seguidor</option>
+								</select>
+							</td>
+						</tr>
+					</table>
+					<input type="hidden" value="" name="fields[]" id="fields_">
+
+					</div>
+			</fieldset>
+
+			<p class="contextual">
+					<a onClick="new Ajax.Updater('content', '/projects/nafacebook/issues/gantt?month=7&amp;months=6&amp;year=2011&amp;zoom=3', {asynchronous:true, evalScripts:true, method:'get', parameters:'authenticity_token=' + encodeURIComponent('IOpS/ElkpZOai3ycE+TLRKJ3kIEXp/IAfdoego3j9LQ=')}); return false;" href="/projects/nafacebook/issues/gantt?month=7&amp;months=6&amp;year=2011&amp;zoom=3" class="icon icon-zoom-in">Acercar</a>
+					<a onClick="new Ajax.Updater('content', '/projects/nafacebook/issues/gantt?month=7&amp;months=6&amp;year=2011&amp;zoom=1', {asynchronous:true, evalScripts:true, method:'get', parameters:'authenticity_token=' + encodeURIComponent('IOpS/ElkpZOai3ycE+TLRKJ3kIEXp/IAfdoego3j9LQ=')}); return false;" href="/projects/nafacebook/issues/gantt?month=7&amp;months=6&amp;year=2011&amp;zoom=1" class="icon icon-zoom-out">Alejar</a>
+			</p>
+
+			<p class="buttons">
+				<input type="text" value="6" size="2" name="months" id="months">
+				meses de
+				<select name="month" id="month">
+					<option value="1">Enero</option>
+					<option value="2">Febrero</option>
+					<option value="3">Marzo</option>
+					<option value="4">Abril</option>
+					<option value="5">Mayo</option>
+					<option value="6">Junio</option>
+					<option value="7" selected="selected">Julio</option>
+					<option value="8">Agosto</option>
+					<option value="9">Setiembre</option>
+					<option value="10">Octubre</option>
+					<option value="11">Noviembre</option>
+					<option value="12">Diciembre</option>
+				</select>
+
+				<select name="year" id="year">
+					<option value="2006">2006</option>
+					<option value="2007">2007</option>
+					<option value="2008">2008</option>
+					<option value="2009">2009</option>
+					<option value="2010">2010</option>
+					<option value="2011" selected="selected">2011</option>
+					<option value="2012">2012</option>
+					<option value="2013">2013</option>
+					<option value="2014">2014</option>
+					<option value="2015">2015</option>
+					<option value="2016">2016</option>
+				</select>
+
+				<input type="hidden" value="2" name="zoom" id="zoom">
+
+				<a onClick="new Ajax.Updater('content', '/issues/gantt?set_filter=1', {asynchronous:true, evalScripts:true, parameters:Form.serialize('query_form') + '&amp;authenticity_token=' + encodeURIComponent('IOpS/ElkpZOai3ycE+TLRKJ3kIEXp/IAfdoego3j9LQ=')}); return false;" href="#" class="icon icon-checked">Aceptar</a>
+   
+				<a onClick="new Ajax.Updater('content', '/projects/nafacebook/issues/gantt?set_filter=1', {asynchronous:true, evalScripts:true, method:'put', parameters:'authenticity_token=' + encodeURIComponent('IOpS/ElkpZOai3ycE+TLRKJ3kIEXp/IAfdoego3j9LQ=')}); return false;" href="#" class="icon icon-reload">Anular</a>
+			</p>
+		</form>
+		<table width="100%" style="border:0; border-collapse: collapse;">
+			<tr>
+				<td>
+					<div class="all">
+						
+						<div id="top">
+							<div class="gantt_hdr" id="top_left"></div>
+							<div class="gantt_hdr" id="top_right">
+							
+							
+<% 
+#
+# Months headers
+#
+month_f = @gantt.date_from
+left = 0
+height = (show_weeks ? header_heigth : header_heigth + g_height)
+@gantt.months.times do 
+	width = ((month_f >> 1) - month_f) * zoom - 1
+	%>
+	<div style="left:<%= left %>px;width:<%= width %>px;height:<%= height %>px;" class="gantt_hdr">
+	<%= link_to "#{month_f.year}-#{month_f.month}", @gantt.params.merge(:year => month_f.year, :month => month_f.month), :title => "#{month_name(month_f.month)} #{month_f.year}"%>
+	</div>
+	<% 
+	left = left + width + 1
+	month_f = month_f >> 1
+end %>
+						
+								<% 
+#
+# Weeks headers
+#
+if show_weeks
+	left = 0
+	height = (show_days ? header_heigth-1 : header_heigth-1 + g_height)
+	if @gantt.date_from.cwday == 1
+	    # @date_from is monday
+        week_f = @gantt.date_from
+	else
+	    # find next monday after @date_from
+		week_f = @gantt.date_from + (7 - @gantt.date_from.cwday + 1)
+		width = (7 - @gantt.date_from.cwday + 1) * zoom-1
+		%>
+		<div style="left:<%= left %>px;top:19px;width:<%= width %>px;height:<%= height %>px;" class="gantt_hdr">&nbsp;</div>
+		<% 
+		left = left + width+1
+	end %>
+	<%
+	while week_f <= @gantt.date_to
+		width = (week_f + 6 <= @gantt.date_to) ? 7 * zoom -1 : (@gantt.date_to - week_f + 1) * zoom-1
+		%>
+		<div style="left:<%= left %>px;top:19px;width:<%= width %>px;height:<%= height %>px;" class="gantt_hdr">
+		<small><%= week_f.cweek if width >= 16 %></small>
+		</div>
+		<% 
+		left = left + width+1
+		week_f = week_f+7
+	end
+end %>
+
+<% 
+#
+# Days headers
+#
+if show_days
+	left = 0
+	height = g_height + header_heigth - 1
+	wday = @gantt.date_from.cwday
+	(@gantt.date_to - @gantt.date_from + 1).to_i.times do 
+	width =  zoom - 1
+	%>
+	<div style="left:<%= left %>px;top:37px;width:<%= width %>px;height:<%= height %>px;font-size:0.7em;<%= "background:#f1f1f1;" if wday > 5 %>" class="gantt_hdr">
+	<%= day_name(wday).first %>
+	</div>
+	<% 
+	left = left + width+1
+	wday = wday + 1
+	wday = 1 if wday > 7
+	end
+end %>
+					</div>
+				</div>
+						<div style="position:relative;height:468px;" id="bottom">
+					
+							<div class="workload">
+								<%	issues_by_user = {}
+									@usuarios.each do |user|
+										
+								%>
+								<div class="user">
+									<div class="user_name">
+										<span><%="#{user.firstname} #{user.lastname}"%></span>
+									</div>
+									<div class="user_total_hours">
+										<span class="remanente"><strong><%=@utils.getRemanente(user.id, @gantt.date_from) %>h</strong> Remanente from:(<%=@gantt.date_from%>)</span>
+									</div>
+									<%  issues_by_user[user.id] = @utils.getIssuesOpenedEntreFechasOr(user.id, @gantt.date_from, @gantt.date_to)
+										issues_by_user[user.id].each do |issue|
+										
+										sum = 0
+										TimeEntry.find(:all, :conditions => ["issue_id = #{issue.id}"]).each do |h| sum+=h.hours end
+										calculos[issue.id] = CalculosTareas.new(issue.id, issue.start_date, issue.due_date, issue.estimated_hours, sum, issue.done_ratio, issue.priority_id, @fecha_actual)  
+									%>
+									<div class="user_each_hours">
+										<span class="tarea<%=@utils.getTareaColor(issue)%>"><a href="/issues/<%=issue.id%>" title="nombre de la tarea relativa a #<%=issue.id%>" id="tareas">#<%=issue.id%></a> <%=issue.description%></span>
+									</div>
+									<% end%>
+								</div>
+								<% end%>
+								
+							
+							</div>
+							
+																	
+							
+							<div class="all_users_workload">
+								<%
+									@usuarios.each do |user|
+								%>
+								<div class="total_user_workload">
+									<% @num_semanas.times do |c|
+										current_week = @lunes.to_time + ( (  c  )  * ( 86400 * 7 ) )
+									%>								
+									
+								
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										<% 	counter = 1
+											issues_by_user[user.id].each do |issue| %>
+											
+										<%	if(calculos[issue.id].tengo_trabajo(current_week) ) then
+				 							current_day = current_week.to_date
+										%>
+										 
+										<div class="workload tarea<%=counter%>">
+											<div class="workload day mon"><span class="tarea1">horas totales  <%=current_day.strftime("%Y-%m-%d") %></span></div><% current_day.next%>
+											<div class="workload day tue"><span class="tarea1">horas totales <%=current_day.strftime("%Y-%m-%d") %> </span></div><% current_day.next%>
+											<div class="workload day wed"><span class="tarea1">horas totales <%=current_day.strftime("%Y-%m-%d") %></span></div><% current_day.next%>
+											<div class="workload day thu"><span class="tarea1">horas totales <%=current_day.strftime("%Y-%m-%d") %></span></div><% current_day.next%>
+											<div class="workload day fri"><span class="tarea1">horas totales <%=current_day.strftime("%Y-%m-%d") %></span></div>
+										</div>
+										<% end%>
+										<% counter = counter + 1 %>
+										<% end%>
+										 
+									</div>
+								<% end%>
+								</div>
+							<% end%>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<table width="100%">
+			<tr>
+				<td align="left">
+					<a onClick="new Ajax.Updater('content', '/projects/nafacebook/issues/gantt?month=1&amp;months=6&amp;year=2011&amp;zoom=2', {asynchronous:true, evalScripts:true, method:'get', onComplete:function(request){window.scrollTo(0,0)}, parameters:'authenticity_token=' + encodeURIComponent('IOpS/ElkpZOai3ycE+TLRKJ3kIEXp/IAfdoego3j9LQ=')}); return false;" href="/projects/nafacebook/issues/gantt?month=1&amp;months=6&amp;year=2011&amp;zoom=2"> << Anterior</a>
+				</td>
+				<td align="right">
+					<a onClick="new Ajax.Updater('content', '/projects/nafacebook/issues/gantt?month=1&amp;months=6&amp;year=2012&amp;zoom=2', {asynchronous:true, evalScripts:true, method:'get', onComplete:function(request){window.scrollTo(0,0)}, parameters:'authenticity_token=' + encodeURIComponent('IOpS/ElkpZOai3ycE+TLRKJ3kIEXp/IAfdoego3j9LQ=')}); return false;" href="/projects/nafacebook/issues/gantt?month=1&amp;months=6&amp;year=2012&amp;zoom=2">Siguiente >> </a>
+				</td>
+			</tr>
+		</table>
+		<p class="legend">
+			<span class="hours_graph" title="leyenda">leyenda</span>
+			<span class="blue">Del total de horas dedicadas se promedian entro los d&iacute;as totales de la petici&oacute;n y van rellen&aacute;ndose</span>
+			<span class="gray">Una vez pasa el d&iacute;a actual de las peticiones se ponen en gris, y se toma para el c&aacute;lculo de carga como fecha de inicio el d&iacute;a actual</span>
+		</p>
+		<p class="other-formats">
+			
+			Exportar a:
+			<span>
+				<a rel="nofollow" class="pdf" href="/projects/nafacebook/issues/gantt.pdf?month=7&amp;months=6&amp;year=2011&amp;zoom=2">PDF</a>
+			</span>
+
+		</p>
+		<div style="clear:both;"></div>
+<% content_for :sidebar do %>
+    <%= render :partial => 'issues/sidebar' %>
+<% end %>
+
+<% html_title('WorkLoad') -%>

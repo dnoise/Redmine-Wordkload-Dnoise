@@ -1,0 +1,1431 @@
+<h2>Workload</h2>
+		<form method="post" id="query_form" action="/issues/gantt">
+			<div style="margin:0;padding:0;display:inline">
+				<input type="hidden" value="put" name="_method">
+				<input type="hidden" value="IOpS/ElkpZOai3ycE+TLRKJ3kIEXp/IAfdoego3j9LQ=" name="authenticity_token">
+			</div>
+				<input type="hidden" value="nafacebook" name="project_id" id="project_id">
+			<fieldset class="collapsible" id="filters">
+					<legend onClick="toggleFieldset(this);">Filtros</legend>
+				<div>
+					<table width="100%">
+						<tr>
+							<td>
+								<table>
+									<tr class="filter" id="tr_status_id">
+										<td style="width:200px;">
+											<input type="checkbox" value="status_id" onClick="toggle_filter('status_id');" name="fields[]" id="cb_status_id" checked="checked">
+											<label for="cb_status_id">Estado</label>
+											</td>
+										<td style="width:150px;">
+											<select style="vertical-align: top;" onChange="toggle_operator('status_id');" name="operators[status_id]" id="operators_status_id" class="select-small">
+												<option selected="selected" value="o">abierta</option>
+												<option value="=">igual</option>
+												<option value="!">no igual</option>
+												<option value="c">cerrada</option>
+												<option value="*">todos</option>
+											</select>
+										</td>
+										
+									</tr>
+								</table>
+							</td>
+							<td class="add-filter">
+								<label for="add_filter_select">A&ntilde;adir el filtro</label>:
+								<select onChange="add_filter();" id="add_filter_select" class="select-small">
+									<option value=""></option>
+									<option value="tracker_id">Tipo</option>
+									<option value="priority_id">Prioridad</option>
+									<option value="assigned_to_id">Asignado a</option>
+									<option value="author_id">Autor</option>
+									<option value="member_of_group">Asignado al grupo</option>
+									<option value="assigned_to_role">Asignado al perfil</option>
+									<option value="subject">Tema</option>
+									<option value="created_on">Creado</option>
+									<option value="updated_on">Actualizado</option>
+									<option value="start_date">Fecha de inicio</option>
+									<option value="due_date">Fecha fin</option>
+									<option value="estimated_hours">Tiempo estimado</option>
+									<option value="done_ratio">% Realizado</option>
+									<option value="deliverable_id">Entregable</option>
+									<option value="watcher_id">Seguidor</option>
+								</select>
+							</td>
+						</tr>
+					</table>
+					<input type="hidden" value="" name="fields[]" id="fields_">
+
+					</div>
+			</fieldset>
+
+			<p class="contextual">
+					<a onClick="new Ajax.Updater('content', '/projects/nafacebook/issues/gantt?month=7&amp;months=6&amp;year=2011&amp;zoom=3', {asynchronous:true, evalScripts:true, method:'get', parameters:'authenticity_token=' + encodeURIComponent('IOpS/ElkpZOai3ycE+TLRKJ3kIEXp/IAfdoego3j9LQ=')}); return false;" href="/projects/nafacebook/issues/gantt?month=7&amp;months=6&amp;year=2011&amp;zoom=3" class="icon icon-zoom-in">Acercar</a>
+					<a onClick="new Ajax.Updater('content', '/projects/nafacebook/issues/gantt?month=7&amp;months=6&amp;year=2011&amp;zoom=1', {asynchronous:true, evalScripts:true, method:'get', parameters:'authenticity_token=' + encodeURIComponent('IOpS/ElkpZOai3ycE+TLRKJ3kIEXp/IAfdoego3j9LQ=')}); return false;" href="/projects/nafacebook/issues/gantt?month=7&amp;months=6&amp;year=2011&amp;zoom=1" class="icon icon-zoom-out">Alejar</a>
+			</p>
+
+			<p class="buttons">
+				<input type="text" value="6" size="2" name="months" id="months">
+				meses de
+				<select name="month" id="month">
+					<option value="1">Enero</option>
+					<option value="2">Febrero</option>
+					<option value="3">Marzo</option>
+					<option value="4">Abril</option>
+					<option value="5">Mayo</option>
+					<option value="6">Junio</option>
+					<option value="7" selected="selected">Julio</option>
+					<option value="8">Agosto</option>
+					<option value="9">Setiembre</option>
+					<option value="10">Octubre</option>
+					<option value="11">Noviembre</option>
+					<option value="12">Diciembre</option>
+				</select>
+
+				<select name="year" id="year">
+					<option value="2006">2006</option>
+					<option value="2007">2007</option>
+					<option value="2008">2008</option>
+					<option value="2009">2009</option>
+					<option value="2010">2010</option>
+					<option value="2011" selected="selected">2011</option>
+					<option value="2012">2012</option>
+					<option value="2013">2013</option>
+					<option value="2014">2014</option>
+					<option value="2015">2015</option>
+					<option value="2016">2016</option>
+				</select>
+
+				<input type="hidden" value="2" name="zoom" id="zoom">
+
+				<a onClick="new Ajax.Updater('content', '/issues/gantt?set_filter=1', {asynchronous:true, evalScripts:true, parameters:Form.serialize('query_form') + '&amp;authenticity_token=' + encodeURIComponent('IOpS/ElkpZOai3ycE+TLRKJ3kIEXp/IAfdoego3j9LQ=')}); return false;" href="#" class="icon icon-checked">Aceptar</a>
+   
+				<a onClick="new Ajax.Updater('content', '/projects/nafacebook/issues/gantt?set_filter=1', {asynchronous:true, evalScripts:true, method:'put', parameters:'authenticity_token=' + encodeURIComponent('IOpS/ElkpZOai3ycE+TLRKJ3kIEXp/IAfdoego3j9LQ=')}); return false;" href="#" class="icon icon-reload">Anular</a>
+			</p>
+		</form>
+		<table width="100%" style="border:0; border-collapse: collapse;">
+			<tr>
+				<td>
+					<div class="all">
+						
+						<div id="top">
+							<div class="gantt_hdr" id="top_left"></div>
+							<div class="gantt_hdr" id="top_right">
+							
+							
+								<div class="months_per_year">
+									<div class="gantt_hdr" style="left:0px;width:495px;height:18px;">
+										<a title="Julio 2011" href="#">2011-7</a>
+									</div>
+
+									<div class="gantt_hdr" style="left:496px;width:495px;height:18px;">
+										<a title="Agosto 2011" href="#">2011-8</a>
+									</div>
+
+									<div class="gantt_hdr" style="left:992px;width:479px;height:18px;">
+										<a title="Setiembre 2011" href="#">2011-9</a>
+									</div>
+
+									<div class="gantt_hdr" style="left:1472px;width:495px;height:18px;">
+										<a title="Octubre 2011" href="#">2011-10</a>
+									</div>
+
+									<div class="gantt_hdr" style="left:1968px;width:479px;height:18px;">
+										<a title="Noviembre 2011" href="#">2011-11</a>
+									</div>
+
+									<div class="gantt_hdr" style="left:2448px;width:495px;height:18px;">
+										<a title="Diciembre 2011" href="#">2011-12</a>
+									</div>
+								</div>
+						
+								<div class="weeks_per_year">										
+									<div class="gantt_hdr" style="left:0px;top:19px;width:47px;height:17px;">&nbsp;</div>
+
+									<div class="gantt_hdr" style="left:48px;top:19px;width:111px;height:17px;">
+										<small>27</small>
+									</div>
+
+									<div class="gantt_hdr" style="left:160px;top:19px;width:111px;height:17px;">
+										<small>28</small>
+									</div>
+
+									<div class="gantt_hdr" style="left:272px;top:19px;width:111px;height:17px;">
+										<small>29</small>
+									</div>
+
+									<div class="gantt_hdr" style="left:384px;top:19px;width:111px;height:17px;">
+										<small>30</small>
+									</div>
+
+									<div class="gantt_hdr" style="left:496px;top:19px;width:111px;height:17px;">
+										<small>31</small>
+									</div>
+
+									<div class="gantt_hdr" style="left:608px;top:19px;width:111px;height:17px;">
+										<small>32</small>
+									</div>
+
+									<div class="gantt_hdr" style="left:720px;top:19px;width:111px;height:17px;">
+										<small>33</small>
+									</div>
+
+									<div class="gantt_hdr" style="left:832px;top:19px;width:111px;height:17px;">
+										<small>34</small>
+									</div>
+
+									<div class="gantt_hdr" style="left:944px;top:19px;width:111px;height:17px;">
+										<small>35</small>
+									</div>
+
+									<div class="gantt_hdr" style="left:1056px;top:19px;width:111px;height:17px;">
+										<small>36</small>
+									</div>
+
+									<div class="gantt_hdr" style="left:1168px;top:19px;width:111px;height:17px;">
+										<small>37</small>
+									</div>
+
+									<div class="gantt_hdr" style="left:1280px;top:19px;width:111px;height:17px;">
+										<small>38</small>
+									</div>
+								
+									<div class="gantt_hdr" style="left:1392px;top:19px;width:111px;height:17px;">
+										<small>39</small>
+									</div>
+								
+									<div class="gantt_hdr" style="left:1504px;top:19px;width:111px;height:17px;">
+										<small>40</small>
+									</div>
+								
+									<div class="gantt_hdr" style="left:1616px;top:19px;width:111px;height:17px;">
+										<small>41</small>
+									</div>
+								
+									<div class="gantt_hdr" style="left:1728px;top:19px;width:111px;height:17px;">
+										<small>42</small>
+									</div>
+								
+									<div class="gantt_hdr" style="left:1840px;top:19px;width:111px;height:17px;">
+										<small>43</small>
+									</div>
+								
+									<div class="gantt_hdr" style="left:1952px;top:19px;width:111px;height:17px;">
+										<small>44</small>
+									</div>
+								
+									<div class="gantt_hdr" style="left:2064px;top:19px;width:111px;height:17px;">
+										<small>45</small>
+									</div>
+								
+									<div class="gantt_hdr" style="left:2176px;top:19px;width:111px;height:17px;">
+										<small>46</small>
+									</div>
+								
+									<div class="gantt_hdr" style="left:2288px;top:19px;width:111px;height:17px;">
+										<small>47</small>
+									</div>
+								
+									<div class="gantt_hdr" style="left:2400px;top:19px;width:111px;height:17px;">
+										<small>48</small>
+									</div>
+								
+									<div class="gantt_hdr" style="left:2512px;top:19px;width:111px;height:17px;">
+										<small>49</small>
+									</div>
+								
+									<div class="gantt_hdr" style="left:2624px;top:19px;width:111px;height:17px;">
+										<small>50</small>
+									</div>
+								
+									<div class="gantt_hdr" style="left:2736px;top:19px;width:111px;height:17px;">
+										<small>51</small>
+									</div>
+								
+									<div class="gantt_hdr" style="left:2848px;top:19px;width:95px;height:17px;">
+										<small>52</small>
+									</div>
+								</div>								
+						
+								<div class="days_per_week">
+								<div class="gantt_hdr" style="left:0px;">V</div>										
+								<div class="gantt_hdr" style="left:16px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:32px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:48px;">L</div>										
+								<div class="gantt_hdr" style="left:64px;">M</div>										
+								<div class="gantt_hdr" style="left:80px;">M</div>										
+								<div class="gantt_hdr" style="left:96px;">J</div>										
+								<div class="gantt_hdr" style="left:112px;">V</div>										
+								<div class="gantt_hdr" style="left:128px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:144px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:160px;">L</div>										
+								<div class="gantt_hdr" style="left:176px;">M</div>										
+								<div class="gantt_hdr" style="left:192px;">M</div>										
+								<div class="gantt_hdr" style="left:208px;">J</div>										
+								<div class="gantt_hdr" style="left:224px;">V</div>										
+								<div class="gantt_hdr" style="left:240px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:256px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:272px;">L</div>										
+								<div class="gantt_hdr" style="left:288px;">M</div>										
+								<div class="gantt_hdr" style="left:304px;">M</div>										
+								<div class="gantt_hdr" style="left:320px;">J</div>										
+								<div class="gantt_hdr" style="left:336px;">V</div>										
+								<div class="gantt_hdr" style="left:352px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:368px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:384px;">L</div>										
+								<div class="gantt_hdr" style="left:400px;">M</div>										
+								<div class="gantt_hdr" style="left:416px;">M</div>										
+								<div class="gantt_hdr" style="left:432px;">J</div>										
+								<div class="gantt_hdr" style="left:448px;">V</div>										
+								<div class="gantt_hdr" style="left:464px;background:#f1f1f1;">S</div>
+								<div class="gantt_hdr" style="left:480px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:496px;">L</div>										
+								<div class="gantt_hdr" style="left:512px;">M</div>				
+								<div class="gantt_hdr" style="left:528px;">M</div>										
+								<div class="gantt_hdr" style="left:544px;">J</div>										
+								<div class="gantt_hdr" style="left:560px;">V</div>										
+								<div class="gantt_hdr" style="left:576px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:592px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:608px;">L</div>										
+								<div class="gantt_hdr" style="left:624px;">M</div>										
+								<div class="gantt_hdr" style="left:640px;">M</div>										
+								<div class="gantt_hdr" style="left:656px;">J</div>										
+								<div class="gantt_hdr" style="left:672px;">V</div>										
+								<div class="gantt_hdr" style="left:688px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:704px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:720px;">L</div>										
+								<div class="gantt_hdr" style="left:736px;">M</div>								
+								<div class="gantt_hdr" style="left:752px;">M</div>										
+								<div class="gantt_hdr" style="left:768px;">J</div>									
+								<div class="gantt_hdr" style="left:784px;">V</div>										
+								<div class="gantt_hdr" style="left:800px;background:#f1f1f1;">S</div>									
+								<div class="gantt_hdr" style="left:816px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:832px;">L</div>								
+								<div class="gantt_hdr" style="left:848px;">M</div>										
+								<div class="gantt_hdr" style="left:864px;">M</div>								
+								<div class="gantt_hdr" style="left:880px;">J</div>									
+								<div class="gantt_hdr" style="left:896px;">V</div>								
+								<div class="gantt_hdr" style="left:912px;background:#f1f1f1;">S</div>									
+								<div class="gantt_hdr" style="left:928px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:944px;">L</div>									
+								<div class="gantt_hdr" style="left:960px;">M</div>										
+								<div class="gantt_hdr" style="left:976px;">M</div>									
+								<div class="gantt_hdr" style="left:992px;">J</div>										
+								<div class="gantt_hdr" style="left:1008px;">V</div>										
+								<div class="gantt_hdr" style="left:1024px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:1040px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:1056px;">L</div>									
+								<div class="gantt_hdr" style="left:1072px;">M</div>										
+								<div class="gantt_hdr" style="left:1088px;">M</div>							
+								<div class="gantt_hdr" style="left:1104px;">J</div>								
+								<div class="gantt_hdr" style="left:1120px;">V</div>							
+								<div class="gantt_hdr" style="left:1136px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:1152px;background:#f1f1f1;">D</div>							
+								<div class="gantt_hdr" style="left:1168px;">L</div>							
+								<div class="gantt_hdr" style="left:1184px;">M</div>										
+								<div class="gantt_hdr" style="left:1200px;">M</div>										
+								<div class="gantt_hdr" style="left:1216px;">J</div>										
+								<div class="gantt_hdr" style="left:1232px;">V</div>									
+								<div class="gantt_hdr" style="left:1248px;background:#f1f1f1;">S</div>								
+								<div class="gantt_hdr" style="left:1264px;background:#f1f1f1;">D</div>									
+								<div class="gantt_hdr" style="left:1280px;">L</div>								
+								<div class="gantt_hdr" style="left:1296px;">M</div>								
+								<div class="gantt_hdr" style="left:1312px;">M</div>								
+								<div class="gantt_hdr" style="left:1328px;">J</div>								
+								<div class="gantt_hdr" style="left:1344px;">V</div>									
+								<div class="gantt_hdr" style="left:1360px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:1376px;background:#f1f1f1;">D</div>								
+								<div class="gantt_hdr" style="left:1392px;">L</div>										
+								<div class="gantt_hdr" style="left:1408px;">M</div>									
+								<div class="gantt_hdr" style="left:1424px;">M</div>								
+								<div class="gantt_hdr" style="left:1440px;">J</div>								
+								<div class="gantt_hdr" style="left:1456px;">V</div>							
+								<div class="gantt_hdr" style="left:1472px;background:#f1f1f1;">S</div>			
+								<div class="gantt_hdr" style="left:1488px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:1504px;">L</div>									
+								<div class="gantt_hdr" style="left:1520px;">M</div>									
+								<div class="gantt_hdr" style="left:1536px;">M</div>									
+								<div class="gantt_hdr" style="left:1552px;">J</div>									
+								<div class="gantt_hdr" style="left:1568px;">V</div>										
+								<div class="gantt_hdr" style="left:1584px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:1600px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:1616px;">L</div>									
+								<div class="gantt_hdr" style="left:1632px;">M</div>										
+								<div class="gantt_hdr" style="left:1648px;">M</div>								
+								<div class="gantt_hdr" style="left:1664px;">J</div>									
+								<div class="gantt_hdr" style="left:1680px;">V</div>									
+								<div class="gantt_hdr" style="left:1696px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:1712px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:1728px;">L</div>					
+								<div class="gantt_hdr" style="left:1744px;">M</div>							
+								<div class="gantt_hdr" style="left:1760px;">M</div>										
+								<div class="gantt_hdr" style="left:1776px;">J</div>									
+								<div class="gantt_hdr" style="left:1792px;">V</div>									
+								<div class="gantt_hdr" style="left:1808px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:1824px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:1840px;">L</div>									
+								<div class="gantt_hdr" style="left:1856px;">M</div>										
+								<div class="gantt_hdr" style="left:1872px;">M</div>									
+								<div class="gantt_hdr" style="left:1888px;">J</div>										
+								<div class="gantt_hdr" style="left:1904px;">V</div>										
+								<div class="gantt_hdr" style="left:1920px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:1936px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:1952px;">L</div>										
+								<div class="gantt_hdr" style="left:1968px;">M</div>										
+								<div class="gantt_hdr" style="left:1984px;">M</div>										
+								<div class="gantt_hdr" style="left:2000px;">J</div>										
+								<div class="gantt_hdr" style="left:2016px;">V</div>										
+								<div class="gantt_hdr" style="left:2032px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:2048px;background:#f1f1f1;">D</div>									
+								<div class="gantt_hdr" style="left:2064px;">L</div>
+								<div class="gantt_hdr" style="left:2080px;">M</div>										
+								<div class="gantt_hdr" style="left:2096px;">M</div>										
+								<div class="gantt_hdr" style="left:2112px;">J</div>										
+								<div class="gantt_hdr" style="left:2128px;">V</div>										
+								<div class="gantt_hdr" style="left:2144px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:2160px;background:#f1f1f1;">D</div>									
+								<div class="gantt_hdr" style="left:2176px;">L</div>								
+								<div class="gantt_hdr" style="left:2192px;">M</div>										
+								<div class="gantt_hdr" style="left:2208px;">M</div>									
+								<div class="gantt_hdr" style="left:2224px;">J</div>										
+								<div class="gantt_hdr" style="left:2240px;">V</div>									
+								<div class="gantt_hdr" style="left:2256px;top:37px;width:15px;height:407px;font-size:0.7em;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:2272px;top:37px;width:15px;height:407px;font-size:0.7em;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:2288px;">L</div>										
+								<div class="gantt_hdr" style="left:2304px;">M</div>										
+								<div class="gantt_hdr" style="left:2320px;">M</div>										
+								<div class="gantt_hdr" style="left:2336px;">J</div>										
+								<div class="gantt_hdr" style="left:2352px;">V</div>										
+								<div class="gantt_hdr" style="left:2368px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:2384px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:2400px;">L</div>
+								<div class="gantt_hdr" style="left:2416px;">M</div>										
+								<div class="gantt_hdr" style="left:2432px;">M</div>										
+								<div class="gantt_hdr" style="left:2448px;">J</div>										
+								<div class="gantt_hdr" style="left:2464px;">V</div>										
+								<div class="gantt_hdr" style="left:2480px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:2496px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:2512px;">L</div>										
+								<div class="gantt_hdr" style="left:2528px;">M</div>
+								<div class="gantt_hdr" style="left:2544px;">M</div>										
+								<div class="gantt_hdr" style="left:2560px;">J</div>										
+								<div class="gantt_hdr" style="left:2576px;">V</div>										
+								<div class="gantt_hdr" style="left:2592px;background:#f1f1f1;">S</div>										
+								<div class="gantt_hdr" style="left:2608px;background:#f1f1f1;">D</div>										
+								<div class="gantt_hdr" style="left:2624px;">L</div>
+								<div class="gantt_hdr" style="left:2640px;">M</div>
+								<div class="gantt_hdr" style="left:2656px;">M</div>
+								<div class="gantt_hdr" style="left:2672px;">J</div>
+								<div class="gantt_hdr" style="left:2688px;">V</div>
+								<div class="gantt_hdr" style="left:2704px;background:#f1f1f1;">S</div>
+								<div class="gantt_hdr" style="left:2720px;background:#f1f1f1;">D</div>
+								<div class="gantt_hdr" style="left:2736px;">L</div>
+								<div class="gantt_hdr" style="left:2752px;">M</div>
+								<div class="gantt_hdr" style="left:2768px;">M</div>
+								<div class="gantt_hdr" style="left:2784px;">J</div>
+								<div class="gantt_hdr" style="left:2800px;">V</div>
+								<div class="gantt_hdr" style="left:2816px;background:#f1f1f1;">S</div>
+								<div class="gantt_hdr" style="left:2832px;background:#f1f1f1;">D</div>			
+								<div class="gantt_hdr" style="left:2848px;">L</div>
+								<div class="gantt_hdr" style="left:2864px;">M</div>
+								<div class="gantt_hdr" style="left:2880px;">M</div>
+								<div class="gantt_hdr" style="left:2896px;">J</div>
+								<div class="gantt_hdr" style="left:2912px;">V</div>
+								<div class="gantt_hdr" style="left:2928px;background:#f1f1f1;">S</div>
+								</div>	
+								
+							</div>
+						</div>
+						<div style="position:relative;height:468px;" id="bottom">
+					
+							<div class="workload">
+								
+								<div class="user">
+									<div class="user_name">
+										<span>Rafael Antonio</span>
+									</div>
+									<div class="user_total_hours">
+										<span class="remanente"><strong>2,25h</strong> Remanente</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea1"><a href="#" title="nombre de la tarea relativa a #1323" id="tareas">#1323</a> Premios codespa</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea2"><a href="#" title="nombre de la tarea relativa a #1324" id="tareas">#1324</a> Redmine</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea3"><a href="#" title="nombre de la tarea relativa a #1325" id="tareas">#1325</a> Premios codespa</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea4"><a href="#" title="nombre de la tarea relativa a #1326" id="tareas">#1326</a> Premios codespa</span>
+									</div>
+								</div>
+							
+								<div class="user">
+									<div class="user_name">
+										<span>Luc&iacute;a</span>
+									</div>
+									<div class="user_total_hours">
+										<span><strong>2,25h</strong> Remanente</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea1"><a href="#" title="nombre de la tarea relativa a #1323">#1323</a> Premios codespa</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea2"><a href="#" title="nombre de la tarea relativa a #1324">#1324</a> Redmine</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea3"><a href="#" title="nombre de la tarea relativa a #1325">#1325</a> Premios codespa</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea4"><a href="#" title="nombre de la tarea relativa a #1326">#1326</a> Premios codespa</span>
+									</div>
+								</div>
+								
+								<div class="user">
+									<div class="user_name">
+										<span>Luc&iacute;a</span>
+									</div>
+									<div class="user_total_hours">
+										<span><strong>2,25h</strong> Remanente</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea1"><a href="#" title="nombre de la tarea relativa a #1323">#1323</a> Premios codespa</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea2"><a href="#" title="nombre de la tarea relativa a #1324">#1324</a> Redmine</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea3"><a href="#" title="nombre de la tarea relativa a #1325">#1325</a> Premios codespa</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea4"><a href="#" title="nombre de la tarea relativa a #1326">#1326</a> Premios codespa</span>
+									</div>
+								</div>
+								
+								<div class="user">
+									<div class="user_name">
+										<span>Luc&iacute;a</span>
+									</div>
+									<div class="user_total_hours">
+										<span><strong>2,25h</strong> Remanente</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea1"><a href="#" title="nombre de la tarea relativa a #1323">#1323</a> Premios codespa</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea2"><a href="#" title="nombre de la tarea relativa a #1324">#1324</a> Redmine</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea3"><a href="#" title="nombre de la tarea relativa a #1325">#1325</a> Premios codespa</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea4"><a href="#" title="nombre de la tarea relativa a #1326">#1326</a> Premios codespa</span>
+									</div>
+								</div>
+								
+								<div class="user">
+									<div class="user_name">
+										<span>Luc&iacute;a</span>
+									</div>
+									<div class="user_total_hours">
+										<span><strong>2,25h</strong> Remanente</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea1"><a href="#" title="nombre de la tarea relativa a #1323">#1323</a> Premios codespa</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea2"><a href="#" title="nombre de la tarea relativa a #1324">#1324</a> Redmine</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea3"><a href="#" title="nombre de la tarea relativa a #1325">#1325</a> Premios codespa</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea4"><a href="#" title="nombre de la tarea relativa a #1326">#1326</a> Premios codespa</span>
+									</div>
+								</div>
+								
+								<div class="user">
+									<div class="user_name">
+										<span>Luc&iacute;a</span>
+									</div>
+									<div class="user_total_hours">
+										<span><strong>2,25h</strong> Remanente</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea1"><a href="#" title="nombre de la tarea relativa a #1323">#1323</a> Premios codespa</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea2"><a href="#" title="nombre de la tarea relativa a #1324">#1324</a> Redmine</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea3"><a href="#" title="nombre de la tarea relativa a #1325">#1325</a> Premios codespa</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea4"><a href="#" title="nombre de la tarea relativa a #1326">#1326</a> Premios codespa</span>
+									</div>
+								</div>
+								
+								<div class="user">
+									<div class="user_name">
+										<span>Luc&iacute;a</span>
+									</div>
+									<div class="user_total_hours">
+										<span><strong>2,25h</strong> Remanente</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea1"><a href="#" title="nombre de la tarea relativa a #1323">#1323</a> Premios codespa</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea2"><a href="#" title="nombre de la tarea relativa a #1324">#1324</a> Redmine</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea3"><a href="#" title="nombre de la tarea relativa a #1325">#1325</a> Premios codespa</span>
+									</div>
+									<div class="user_each_hours">
+										<span class="tarea4"><a href="#" title="nombre de la tarea relativa a #1326">#1326</a> Premios codespa</span>
+									</div>
+								</div>
+							
+							</div>
+							
+																	
+							
+							<div class="all_users_workload">
+								
+								<div class="total_user_workload">
+																		
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea4">
+											<div class="workload day mon"><span class="tarea4">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea4">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea4">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea4">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea4">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea1">
+											<div class="workload day mon"><span class="tarea1">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea1">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea1">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea1">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea1">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea2">
+											
+											<div class="workload day thu"><span class="tarea2">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea2">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea4">
+											<div class="workload day mon"><span class="tarea4">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea4">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea4">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea4">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea4">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea1">
+											<div class="workload day mon"><span class="tarea1">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea1">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea1">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea1">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea1">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea2">
+											<div class="workload day mon"><span class="tarea2">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea2">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea2">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea2">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea2">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea3">
+											<div class="workload day mon"><span class="tarea3">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea3">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea3">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea3">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea3">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+								</div>
+								
+								<div class="total_user_workload">
+																		
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea4">
+											<div class="workload day mon"><span class="tarea4">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea4">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea4">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea4">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea4">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea1">
+											<div class="workload day mon"><span class="tarea1">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea1">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea1">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea1">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea1">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea2">
+											
+											<div class="workload day thu"><span class="tarea2">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea2">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea4">
+											<div class="workload day mon"><span class="tarea4">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea4">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea4">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea4">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea4">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea1">
+											<div class="workload day mon"><span class="tarea1">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea1">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea1">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea1">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea1">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea2">
+											<div class="workload day mon"><span class="tarea2">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea2">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea2">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea2">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea2">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea3">
+											<div class="workload day mon"><span class="tarea3">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea3">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea3">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea3">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea3">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+								</div>
+								
+								<div class="total_user_workload">
+																		
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea4">
+											<div class="workload day mon"><span class="tarea4">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea4">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea4">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea4">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea4">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea1">
+											<div class="workload day mon"><span class="tarea1">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea1">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea1">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea1">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea1">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea2">
+											
+											<div class="workload day thu"><span class="tarea2">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea2">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea4">
+											<div class="workload day mon"><span class="tarea4">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea4">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea4">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea4">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea4">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea1">
+											<div class="workload day mon"><span class="tarea1">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea1">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea1">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea1">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea1">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea2">
+											<div class="workload day mon"><span class="tarea2">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea2">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea2">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea2">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea2">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea3">
+											<div class="workload day mon"><span class="tarea3">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea3">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea3">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea3">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea3">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+								</div>
+								
+								<div class="total_user_workload">
+																		
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea4">
+											<div class="workload day mon"><span class="tarea4">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea4">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea4">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea4">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea4">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea1">
+											<div class="workload day mon"><span class="tarea1">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea1">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea1">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea1">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea1">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea2">
+											
+											<div class="workload day thu"><span class="tarea2">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea2">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea4">
+											<div class="workload day mon"><span class="tarea4">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea4">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea4">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea4">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea4">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea1">
+											<div class="workload day mon"><span class="tarea1">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea1">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea1">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea1">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea1">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea2">
+											<div class="workload day mon"><span class="tarea2">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea2">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea2">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea2">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea2">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea3">
+											<div class="workload day mon"><span class="tarea3">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea3">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea3">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea3">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea3">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+								</div>
+								
+								<div class="total_user_workload">
+																		
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea4">
+											<div class="workload day mon"><span class="tarea4">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea4">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea4">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea4">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea4">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea1">
+											<div class="workload day mon"><span class="tarea1">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea1">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea1">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea1">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea1">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea2">
+											
+											<div class="workload day thu"><span class="tarea2">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea2">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea4">
+											<div class="workload day mon"><span class="tarea4">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea4">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea4">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea4">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea4">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea1">
+											<div class="workload day mon"><span class="tarea1">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea1">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea1">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea1">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea1">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea2">
+											<div class="workload day mon"><span class="tarea2">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea2">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea2">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea2">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea2">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea3">
+											<div class="workload day mon"><span class="tarea3">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea3">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea3">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea3">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea3">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+								</div>
+								
+								<div class="total_user_workload">
+																		
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea4">
+											<div class="workload day mon"><span class="tarea4">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea4">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea4">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea4">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea4">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea1">
+											<div class="workload day mon"><span class="tarea1">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea1">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea1">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea1">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea1">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea2">
+											
+											<div class="workload day thu"><span class="tarea2">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea2">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea4">
+											<div class="workload day mon"><span class="tarea4">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea4">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea4">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea4">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea4">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea1">
+											<div class="workload day mon"><span class="tarea1">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea1">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea1">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea1">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea1">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea2">
+											<div class="workload day mon"><span class="tarea2">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea2">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea2">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea2">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea2">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea3">
+											<div class="workload day mon"><span class="tarea3">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea3">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea3">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea3">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea3">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+								</div>
+								
+								<div class="total_user_workload">
+																		
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea4">
+											<div class="workload day mon"><span class="tarea4">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea4">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea4">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea4">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea4">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea1">
+											<div class="workload day mon"><span class="tarea1">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea1">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea1">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea1">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea1">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea2">
+											
+											<div class="workload day thu"><span class="tarea2">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea2">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea4">
+											<div class="workload day mon"><span class="tarea4">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea4">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea4">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea4">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea4">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+									<div class="user_workload_per_week">
+										
+										<div class="workload week">
+											<div class="workload day"><span class="tarea4 total">horas totales lunes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales martes</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales jueves</span></div>
+											<div class="workload day"><span class="tarea4 total">horas totales viernes</span></div>
+										</div>
+									
+										<div class="workload remanente">
+											<div class="workload day"><span class="remanente">horas totales lunes</span></div>
+											<div class="workload day"><span class="remanente">horas totales martes</span></div>
+											<div class="workload day"><span class="remanente">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day"><span class="remanente">horas totales jueves</span></div>
+											<div class="workload day"><span class="remanente">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea1">
+											<div class="workload day mon"><span class="tarea1">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea1">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea1">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea1">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea1">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea2">
+											<div class="workload day mon"><span class="tarea2">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea2">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea2">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea2">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea2">horas totales viernes</span></div>
+										</div>
+										
+										<div class="workload tarea3">
+											<div class="workload day mon"><span class="tarea3">horas totales lunes</span></div>
+											<div class="workload day tue"><span class="tarea3">horas totales martes</span></div>
+											<div class="workload day wed"><span class="tarea3">horas totales mi&eacute;rcoles</span></div>
+											<div class="workload day thu"><span class="tarea3">horas totales jueves</span></div>
+											<div class="workload day fri"><span class="tarea3">horas totales viernes</span></div>
+										</div>
+									</div>
+								
+								</div>
+							
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<table width="100%">
+			<tr>
+				<td align="left">
+					<a onClick="new Ajax.Updater('content', '/projects/nafacebook/issues/gantt?month=1&amp;months=6&amp;year=2011&amp;zoom=2', {asynchronous:true, evalScripts:true, method:'get', onComplete:function(request){window.scrollTo(0,0)}, parameters:'authenticity_token=' + encodeURIComponent('IOpS/ElkpZOai3ycE+TLRKJ3kIEXp/IAfdoego3j9LQ=')}); return false;" href="/projects/nafacebook/issues/gantt?month=1&amp;months=6&amp;year=2011&amp;zoom=2"> << Anterior</a>
+				</td>
+				<td align="right">
+					<a onClick="new Ajax.Updater('content', '/projects/nafacebook/issues/gantt?month=1&amp;months=6&amp;year=2012&amp;zoom=2', {asynchronous:true, evalScripts:true, method:'get', onComplete:function(request){window.scrollTo(0,0)}, parameters:'authenticity_token=' + encodeURIComponent('IOpS/ElkpZOai3ycE+TLRKJ3kIEXp/IAfdoego3j9LQ=')}); return false;" href="/projects/nafacebook/issues/gantt?month=1&amp;months=6&amp;year=2012&amp;zoom=2">Siguiente >> </a>
+				</td>
+			</tr>
+		</table>
+		<p class="legend">
+			<span class="hours_graph" title="leyenda">leyenda</span>
+			<span class="blue">Del total de horas dedicadas se promedian entro los d&iacute;as totales de la petici&oacute;n y van rellen&aacute;ndose</span>
+			<span class="gray">Una vez pasa el d&iacute;a actual de las peticiones se ponen en gris, y se toma para el c&aacute;lculo de carga como fecha de inicio el d&iacute;a actual</span>
+		</p>
+		<p class="other-formats">
+			
+			Exportar a:
+			<span>
+				<a rel="nofollow" class="pdf" href="/projects/nafacebook/issues/gantt.pdf?month=7&amp;months=6&amp;year=2011&amp;zoom=2">PDF</a>
+			</span>
+
+		</p>
+		<div style="clear:both;"></div>
+    				

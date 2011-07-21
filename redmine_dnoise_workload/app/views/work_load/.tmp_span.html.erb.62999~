@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <meta name="generator" content="HTML Tidy, see www.w3.org">
+
+        <title></title>
+    </head>
+
+    <body>
+        <div class="info_widget">
+            <div class="tarea_text">
+                <span><strong>#<%=@issu.id%> -</strong> <%=@issu.description%></span>
+            </div>
+
+            <div class="priority">
+                <span><strong>Prioridad:</strong> <%=Enumeration.find(@issu.priority_id).name%></span>
+            </div>
+
+            <div class="date">
+                <span><strong>Inicio/Fin -</strong> <%=@issu.start_date.to_date.strftime("%d/%m/%Y") if @issu.start_date.respond_to?(:to_date)%> -
+                <%=@issu.due_date.to_date.strftime("%d/%m/%Y") if @issu.due_date.respond_to?(:to_date)%></span>
+            </div>
+
+            <div class="a_hours">
+                <span><strong>H. Asignadas:</strong> <%=@issu.estimated_hours%></span>
+            </div>
+			<%
+			sum = 0
+			TimeEntry.find(:all, :conditions => ["issue_id = #{@issu.id}"]).each do |h| sum+=h.hours end
+			%>
+            <div class="d_hours">
+                <span><strong>H. Dedicados:</strong> <%=sum%></span>
+            </div>
+
+            <div class="separation">
+                <hr noshade>
+            </div>
+
+            <div class="status">
+                <span><strong>Estado:</strong> <%=IssueStatus.find(@issu.status_id).name%></span>
+            </div>
+
+           <div class="percent">
+
+				<span>
+					<strong>%:</strong>
+					<div class="percent_div">
+						<span class="percent_img" style="width:<%=@issu.done_ratio%>%"></span>
+					</div>
+				</span>
+			</div>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,291 @@
+.controller-work_load #content {overflow:hidden; min-height: 630px;}
+.controller-work_load .all { width:100%; height:650px; overflow:auto; border-right: 2px solid #C0C0C0; z-index: 0; float:left}
+.controller-work_load #top {float:left; width:3276px; height:55px; position:relative;}
+.controller-work_load #bottom {float:left; width:3278px; height:auto !important; }
+.controller-work_load #top_left {float:left; width:330px;height:54px;background: #eee; position:relative; border-left: 1px solid #C0C0C0;}
+.controller-work_load #top_right {float:left; width:2943px; height: 54px;background: #eee; position:relative;}
+.controller-work_load #bottom-left { position:relative; float:left; height: auto !important;}
+.controller-work_load .workload { float:left; padding-left:30px; font-size:12px; width:300px; border-left: 1px solid #c0c0c0; border-right: 1px solid #c0c0c0;}
+.controller-work_load .workload.day { float:left; width: 16px; padding-left:0; margin-left:0; margin-top:0; position:relative;border:0; }
+.controller-work_load .workload.day.mon {left:0; width: 0; float:left;}
+.controller-work_load .workload.day.tue {left:16px; width: 0; float:left;}
+.controller-work_load .workload.day.wed {left:32px; width: 0; float:left;}
+.controller-work_load .workload.day.thu {left:48px; width: 0; float:left;}
+.controller-work_load .workload.day.fri {left:64px; width: 0; float:left;}
+.controller-work_load .workload.day span.tarea1.total { float:left; background:url(../images/tarea1.png) repeat-y left; padding-left:30px; height:25px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea2.total { float:left; background:url(../images/tarea2.png) repeat-y left; padding-left:30px; height:25px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea3.total { float:left; background:url(../images/tarea3.png) repeat-y left; padding-left:30px; height:25px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea4.total { float:left; background:url(../images/tarea4.png) repeat-y left; padding-left:30px; height:25px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea5.total { float:left; background:url(../images/tarea5.png) repeat-y left; padding-left:30px; height:25px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea6.total { float:left; background:url(../images/tarea6.png) repeat-y left; padding-left:30px; height:25px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea7.total { float:left; background:url(../images/tarea7.png) repeat-y left; padding-left:30px; height:25px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea8.total { float:left; background:url(../images/tarea8.png) repeat-y left; padding-left:0px; text-align: center; padding-top:7px; height:18px; font-size:10px; width:100%; color:#ffffff; text-indent:0px;}
+.controller-work_load .workload.day span.tarea9.total { float:left; background:url(../images/tarea_11.png) repeat-y left; padding-left:0px; text-align: center; padding-top:7px; height:18px; font-size:10px; width:100%; color:#f53705; text-indent:0px;}
+.controller-work_load .workload.day span.tarea_a.total { float:left; background:url(../images/tarea9.png) repeat-y left; padding-left:30px; height:25px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea_g.total { float:left; background:url(../images/tarea10.png) repeat-y left; padding-left:30px; height:25px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea1 { float:left; background:url(../images/tarea1_border.png) repeat-y left; padding-left:30px; height:11px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea2 { float:left; background:url(../images/tarea2_border.png) repeat-y left; padding-left:30px; height:11px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea3 { float:left; background:url(../images/tarea3_border.png) repeat-y left; padding-left:30px; height:11px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea4 { float:left; background:url(../images/tarea4_border.png) repeat-y left; padding-left:30px; height:11px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea5 { float:left; background:url(../images/tarea5_border.png) repeat-y left; padding-left:30px; height:11px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea6 { float:left; background:url(../images/tarea6_border.png) repeat-y left; padding-left:30px; height:11px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea7 { float:left; background:url(../images/tarea7_border.png) repeat-y left; padding-left:30px; height:11px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea8 { float:left; background:url(../images/tarea8_border.png) repeat-y left; padding-left:30px; height:11px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea9 { float:left; background:url(../images/tarea11.png) repeat-y left; padding-left:30px; height:11px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea_a { float:left; background:url(../images/tarea9_border.png) repeat-y left; padding-left:30px; height:11px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.tarea_g { float:left; background:url(../images/tarea10_border.png) repeat-y left; padding-left:30px; height:11px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.day span.remanente {float:left; background:url(../images/remanente.png) repeat-y left; height:11px; width:100%; text-indent:-9999px;}
+.controller-work_load .user {width:100%; float:left; height:auto; text-align:left; border-bottom:3px solid #999;  min-height: 82px;}
+.controller-work_load .user .user_name {float:left; margin-top:10px; width:100%;}
+.controller-work_load .user .user_name span{ font-size:15px; font-weight:bold; color:#666666;}
+
+.controller-work_load .user .user_total_hours {float:left; height:auto;}
+.controller-work_load .user .user_total_hours span.remanente { margin-top: 20px; float:left; background:url(../images/remanente.png) no-repeat left; padding-left:30px; height:11px; width:150px; color:#666;}
+.controller-work_load .user .user_total_hours strong {color:#6699ff;}
+.controller-work_load .user .user_each_hours { float:left; padding-top:12px; width:100%; }
+.controller-work_load .user .user_each_hours:last-child {padding-bottom:15px;}
+.controller-work_load .user .user_each_hours span.tarea1 { float:left; background:url(../images/perfect.png) no-repeat left; padding-left:30px; height:15px; max-width:265px; width:auto; color:#666;}
+.controller-work_load .user .user_each_hours span.tarea2 { float:left; background:url(../images/on_time.png) no-repeat left; padding-left:30px; height:15px; max-width:265px; width:auto; color:#666;}
+.controller-work_load .user .user_each_hours span.tarea3 { float:left; background:url(../images/retard2.png) no-repeat left; padding-left:30px; height:15px; max-width:265px; width:auto; color:#666;}
+.controller-work_load .user .user_each_hours span.tarea4 { float:left; background:url(../images/retard.png) no-repeat left; padding-left:30px; height:15px; max-width:265px; width:auto; color:#666;}
+.controller-work_load .user .user_each_hours span.tarea_remanente { float:left; background:url(../images/clock.png) no-repeat left; padding-left:30px; height:15px; max-width:265px; width:auto; color:#666;}
+
+
+.controller-work_load .months_per_year {height:16px; width:100%; float:left;}
+.controller-work_load .days_per_month {height:16px; width:100%; float:left; position: relative;}
+.controller-work_load .days_per_month .gantt_hdr { float: left; font-size: 0.7em; top: 4px; }
+.controller-work_load .days_per_week { height:16px; width:100%; float:left; position:relative;}
+.controller-work_load .days_per_week .gantt_hdr {top:5px; width:15px; font-size:0.7em; float:left; }
+.controller-work_load .days_per_month .day {float:left; display:inline; width:16px; text-align:center; font-weight:bold; padding-top: 3px;}
+.controller-work_load .days_per_month .day:last-child {width:15px !important; }
+
+.controller-work_load .all_users_workload {height: auto; overflow: hidden; width:2944px; float:left; background-image:url(../images/bg_calendar.png); background-repeat: repeat; background-position: -1px 0px;}
+.controller-work_load .total_user_workload { width:2942px; height:auto; float:left; border-bottom: 3px solid #999999;}
+.controller-work_load .user_workload_per_week { height: auto; left: 47px; position: relative; top: 0px; width: 112px; float:left; padding-bottom:13px;}
+.controller-work_load .workload.week { left: 0px; padding-top: 10px; height: 20px; padding-left:0; position:relative; float:left; z-index:1; border:0; width: 112px;}
+.controller-work_load .workload.remanente { left: 0px; padding-left:0; padding-top:10px; position: relative; width: 100%; border:0; height:17px;}
+
+.controller-work_load .workload.tarea { border: 0 none; height: 13px; left: 0; margin-bottom: 2px; margin-top: 10px; padding-left: 0; padding-top: 2px; position: relative; width: 100%;}
+.controller-work_load .workload.tarea.tarea1 { position:relative; }
+.controller-work_load .workload.tarea span.tarea_u { float:left; background:url(../images/tarea12_border.png) repeat-y left; padding-left:30px; height:11px; width:100%; text-indent:-9999px;}
+.controller-work_load .workload.tarea span.tarea_u.total { float:left; background:url(../images/tarea12.png) repeat-y left; padding-left:30px; height:25px; width:100%; text-indent:-9999px;}
+
+.controller-work_load .legend {width: 1100px; float:left; height:95px; font-size:12px; color:#666666; height: auto;}
+.controller-work_load .hours_graph { background:url(../images/legend.gif) no-repeat left; float:left; text-indent:-9999px;  width: 39%; height:45px; margin-bottom:15px;}
+.controller-work_load .timing_graph { float:left; width: 56%; height:45px; margin-bottom:15px;}
+.controller-work_load .timing_graph .title { width:100%; float:left; margin-bottom:10px;}
+.controller-work_load .timing_graph .perfect { width:80px; float:left; padding-left:20px; background: url(../images/perfect.png) no-repeat left;}
+.controller-work_load .timing_graph .normal { width:80px; float:left; padding-left:20px; background: url(../images/on_time.png) no-repeat left;}
+.controller-work_load .timing_graph .retard { width:80px; float:left; padding-left:20px; background: url(../images/retard2.png) no-repeat left;}
+.controller-work_load .timing_graph .retard2 { width: 100px; float:left; padding-left:20px; background: url(../images/retard.png) no-repeat left;}
+.controller-work_load .timing_graph .no_time { width:80px; float:left; padding-left:20px; background: url(../images/clock.png) no-repeat left;}
+.controller-work_load .tareas {float:left;}
+
+
+.controller-work_load .blue { background:url(../images/tarea9_border.png) no-repeat left; padding-left:40px; float:left; margin-bottom:5px; width:100%;}
+.controller-work_load .gray { background:url(../images/tarea10_border.png) no-repeat left; padding-left:40px; float:left;margin-bottom:5px; width:100%;}
+
+
+.controller-work_load #today { background: #E5352C; position:relative; left:463px; width:3px;}
+.controller-work_load .month_end { background: #999999; position:relative; left:680px; width:3px;}
+
+.controller-work_load .info_widget { width:245px; background:#FFFFCC; border:1px solid #cccccc; height:auto; position:absolute; margin:17px 28px; padding:7px; display:none; color:#000;}
+.controller-work_load .info_widget .tarea1 {font-size:12px; margin-bottom:3px; width:100%;}
+.controller-work_load .info_widget .tarea1 span strong {background:url(../images/perfect.png) no-repeat left; padding-left:20px;}
+.controller-work_load .info_widget .tarea2 {font-size:12px; margin-bottom:3px; width:100%;}
+.controller-work_load .info_widget .tarea2 span strong {background:url(../images/on_time.png) no-repeat left; padding-left:20px;}
+.controller-work_load .info_widget .tarea3 {font-size:12px; margin-bottom:3px; width:100%;}
+.controller-work_load .info_widget .tarea3 span strong {background:url(../images/retard2.png) no-repeat left; padding-left:20px;}
+.controller-work_load .info_widget .tarea4 {font-size:12px; margin-bottom:3px; width:100%;}
+.controller-work_load .info_widget .tarea4 span strong {background:url(../images/retard.png) no-repeat left; padding-left:20px;}
+.controller-work_load .info_widget .proyecto {font-size: 12px; margin-bottom: 3px; width: 100%;}
+.controller-work_load .info_widget .tarea_remanente {font-size:12px; margin-bottom:3px; width:100%;}
+.controller-work_load .info_widget .tarea_remanente span strong {background:url(../images/clock.png) no-repeat left; padding-left:20px;}
+.controller-work_load .info_widget .priority {font-size:11px; font-weight:bold; margin-bottom:3px; width:100%;}
+.controller-work_load .info_widget .date {font-size:11px; margin-bottom:3px; width:100%; float:left;}
+.controller-work_load .info_widget .a_hours {font-size:11px; margin-bottom:3px; width:50%; float:left;}
+.controller-work_load .info_widget .d_hours {font-size:11px; margin-bottom:3px; width:50%; float:left;}
+.controller-work_load .info_widget .status {float: left; font-size: 11px; margin-top: 10px; width: 100%;}
+.controller-work_load .info_widget .separation {float:left; width:99%; height:5px; color:#cccccc;}
+.controller-work_load .info_widget .percent {font-size:11px; margin-top:10px; width:100%; float:left;}
+.controller-work_load .info_widget .percent div {float:left;}
+.controller-work_load .info_widget .percent div strong { float: left; width: 70px;}
+.controller-work_load .info_widget .percent .percent_div { width: 125px; height:15px; float:left; background:#fff; border:1px solid #cccccc;  margin-bottom: 8px;}
+.controller-work_load .info_widget .percent .percent_div .percent_img { background: #77B5DC; height:100%; float:left; width:60%;}
+.controller-work_load .info_widget .percent .percent_div .percent_img2 { background: #bababa; height:100%; float:left; width:60%;}
+.controller-work_load .info_widget .percent .percent_text { float:left; margin-left:15px; }
+.controller-work_load .info_widget .dcr {font-size:11px; margin-bottom:3px; width:100%; float:left; margin-top:10px;}
+
+.controller-work_load form {width:100%; float:left;}
+.controller-work_load .blank {background:transparent !important;}
+
+.controller-work_load .buttons {float:left; width:325px; margin-left: 4px;}
+.controller-work_load .calendar {float:left;  font-size: 0.9em; margin-bottom: 1.4em; margin-top: 1em;}
+.controller-work_load .calendar span:first-child {float:left;}
+.controller-work_load .calendar span:first-child p { float:left; margin:0 10px 0 0; padding:3px; color:#8C8C8C; font-weight:bold;}
+.controller-work_load .calendar input {float:left;}
+.controller-work_load .calendar span.calendar_icon { background: url("../images/calendar.png") no-repeat scroll 0 0 transparent; cursor: pointer; float: left; margin-left: 10px; margin-top:5px; text-indent: -9999px; width: 20px;}
+.controller-work_load .issues {float:left; font-size: 0.9em; margin-bottom: 1.4em; margin-top: 1.4em; margin-left:30px; color:#8C8C8C; font-weight:bold;}
+.controller-work_load .icon {float:left;  font-size: 0.9em; margin-bottom: 1.4em; margin-top: 1.1em;}
+.controller-work_load .multiselect {float:left; margin-bottom: 1.4em; margin-top: 1em; margin-left:25px;}
+.controller-work_load .multiselect p {float:left; margin:0 10px 0 0; padding:2px; color:#8C8C8C; font-weight:bold;}
+.controller-work_load .multiselect select {float:left; margin:0 10px 0 0; padding:3px; font-size: 0.9em; color:#8C8C8C; font-weight:normal;}
+
+/* ESTILOS PARA EL CALENDARIO */
+
+ * .capacalendario{
+	width: 225px;
+	position: absolute;
+	display: none;
+	background-color: #f2f2f2;
+	z-index:1;
+}
+.capacalendarioborde{
+	padding: 3px;
+	border: 1px solid #999;
+}
+.diassemana{
+	overflow: hidden;
+	background: #ddd;
+	margin: 0;
+	clear: both;
+}
+.diasmes{
+	overflow: hidden;
+
+}
+.diassemana span, .diasmes span{
+	margin: 3px;
+	width: 25px;
+	display: block;
+	float: left;
+	text-align: center;
+	height: 1.5em;
+	line-height: 1.5em;
+	font-size: 0.875em;
+}
+.diassemana span{
+	text-transform: uppercase;
+	color: #666;
+	font-weight: bold;
+	height: 1.8em;
+	line-height: 1.8em;
+}
+.diasmes span{
+	background: #ddd;
+	cursor: pointer;
+	color: #666;
+}
+.diasmes span.diainvalido{
+	background: #f2f2f2;
+	cursor: default;
+}
+.diasmes span.domingo{
+	color: #D95B43;
+}
+.capacalendario span.primero{
+	margin-left:0 !important;
+}
+.capacalendario span.ultimo{
+	margin-right:0 !important;
+}
+a.botoncal{
+	margin-left: 5px;
+	background: transparent url(calendario.png) no-repeat;
+}
+a.botoncal span{
+	display: inline-table;
+	width: 16px;
+	height: 16px;
+}
+a.botonmessiguiente{
+	float: right;
+	background: transparent url(105.png) no-repeat;
+	margin: 5px 5px 0 5px;
+	height:10px;
+	width:15px;
+}
+a.botonmessiguiente span, a.botonmesanterior span, a.botoncambiaano span{
+	display: inline-table;
+	width: 10px;
+	height: 10px;
+}
+a.botonmesanterior{
+	float: left;
+	background: transparent url(106.png) no-repeat;
+	margin: 5px 5px 0 5px;
+	height:10px;
+	width:15px;
+}
+a.botoncambiaano{
+	background: transparent url(193.png) no-repeat;
+	margin: 5px 5px 0 5px;
+	font-size: 0.8em;
+	height:10px;
+	width:15px;
+}
+.textomesano{
+	background-color: #ddd;
+	overflow: hidden;
+	padding: 4px 2px;
+	font-size: 0.8em;
+	font-weight: bold;
+	text-align: center;
+	color: #666;
+}
+.mesyano{
+	margin-top: 3px;
+}
+.visualmesano{
+	display: inline;
+}
+.capacerrar{
+	overflow: hidden;
+	font-size: 0.5em;
+	padding-bottom: 2px;
+}
+a.calencerrar{
+	float: right;
+	background: transparent url(101.png) no-repeat;
+	margin: 2px 5px 0 5px;
+	height:10px;
+	width:15px;
+}
+a.calencerrar span{
+	display: inline-table;
+	width: 10px;
+	height: 10px;
+}
+.capaselanos{
+	width: 50px;
+	display: none;
+	font-size: 0.8em;
+	text-align: center;
+	position: absolute;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+.capaselanos a{
+	display: block;
+	text-decoration: none;
+	border-bottom: 1px solid #ddd;
+	padding: 1px 0;
+	font-size: 0.9em;
+}
+.capaselanos a.seleccionado{
+	background-color: #eef;
+	font-weight: bold;
+}
+.capaselanos a.ultimo{
+	border: 0;
+}
+ 
+ 
+/* Modificaciones 19/07/2011 */
+
+.controller-work_load .black { background:url(../images/tarea11.png) no-repeat left; padding-left:40px; float:left;width:100%;}
+.controller-work_load .gantt_hdr.month_bg1 { background: #cccccc;}
+.controller-work_load .gantt_hdr.month_bg1 a { color: #ffffff;}
+.controller-work_load .undefined { margin-top:20px !important; float:left; height:auto !important;}
+.controller-work_load .undefined .header { margin:0px !important; float:left; height:10px !important;}
+
