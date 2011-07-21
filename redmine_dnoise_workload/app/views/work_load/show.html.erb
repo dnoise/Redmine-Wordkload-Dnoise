@@ -15,46 +15,80 @@ calculos = {}
 pos_background = (16 * (8 - @gantt.date_from.to_date.cwday ))-1
 
 %>
-<h2>Workload</h2>
-		<% form_tag({:controller => 'work_load', :action => 'show', :project_id => @project, :month => params[:month], :year => params[:year], :months => params[:months]}, :method => :get, :id => 'query_form') do %>
+
+<div class="header_content">
+    						<div class="header_content_top">
+    							<div class="header_content_top_left">
+    								<h2>Workload</h2>
+    							</div>
+								<div class="header_content_top_right">
+						            <span>
+						             <a href="http://www.d-noise.net/" title="D-noise" target="_blank">www.d-noise.net</a>
+						          <br />
+						          <p>Powered by DNOiSE</p>
+						         </span>
+						         <div class="logo_dnoise">&nbsp;</div>
+						        </div>
+    						</div>
+							<div class="header_content_bottom">
+								<% form_tag({:controller => 'work_load', :action => 'show', :project_id => @project, :month => params[:month], :year => params[:year], :months => params[:months]}, :method => :get, :id => 'query_form') do %>
+									<div class="header_content_bottom_left">
+										<div class="buttons">
+											<label>Rango / Range</label>
+											<p class="buttons">
+											<%= text_field_tag 'months', @gantt.months, :size => 2 %>
+											<%= l(:label_months_from) %>
+											<%= select_month(@gantt.month_from, :prefix => "month", :discard_type => true) %>
+											<%= select_year(@gantt.year_from, :prefix => "year", :discard_type => true) %>
+											<%= hidden_field_tag 'zoom', @gantt.zoom %>
+											</p>
+										</div>
+										<div class="calendar">
+											<span>
+												<label>Fecha de c&aacute;lculo / Today</label>
+												<input type="text" value="<%=@fecha_actual.to_date.strftime("%d/%m/%Y")%>" autocomplete="off" class="campofecha" id="date1" name="fecha_actual">
+												<span class="calendar_icon">calendario</span> 
+											</span>
+											
+										</div>
+									</div>
+									<div class="header_content_bottom_center">
+										<div class="multiselect">
+												<label>Usuarios / Users</label>
+												<select name='usuarios_id[]' multiple='true'>
+												
+												<%
+												
+												 User.active.each do |user|
+												%><option <%=(@usuarios.include?(user.id.to_s) ) ? 'selected="selected"' : ''%> value='<%=user.id%>'><%=user.firstname%> <%=user.lastname%></option>
+												<% end
+												%>
+												</select>
+												</div>
+									</div>
+									<div class="header_content_bottom_right">
+										<div class="issues">
+											<span>
+												<input type="hidden" name="show_issues" value="0" /><input type="checkbox" <%=(params[:show_issues]== "1") ? 'checked="checked"' : ''%> id="cb_issues_id" name="show_issues" value="1">
+												<label for="cb_status_id">Mostrar Tareas / Show Issues</label>
+											</span>
+											
+										</div>
+														
+										<%= link_to_function l(:button_apply), '$("query_form").submit()', :class => 'icon icon-checked' %>
+									</div>
+								</form>
+							</div>
+    					</div>
+		
 
 
-<p class="buttons">
-<%= text_field_tag 'months', @gantt.months, :size => 2 %>
-<%= l(:label_months_from) %>
-<%= select_month(@gantt.month_from, :prefix => "month", :discard_type => true) %>
-<%= select_year(@gantt.year_from, :prefix => "year", :discard_type => true) %>
-<%= hidden_field_tag 'zoom', @gantt.zoom %>
-<%= link_to_function l(:button_apply), '$("query_form").submit()', :class => 'icon icon-checked' %>
-<div class="calendar">
-									
-	<span>
-		<p>Introduce la fecha de inicio de c&aacute;lculo</p>
-		<input type="text" value="<%=@fecha_actual.to_date.strftime("%d/%m/%Y")%>" autocomplete="off" class="campofecha" id="date1" name="fecha_actual"> 
-	</span>
-	<span class="calendar_icon">calendario</span>
-</div>
-<div class="issues">
-	
-	<span>
-		<input type="hidden" name="show_issues" value="0" /><input type="checkbox" <%=(params[:show_issues]== "1") ? 'checked="checked"' : ''%> id="cb_issues_id" name="show_issues" value="1">
-		<label for="cb_status_id">Mostrar Tareas</label>
-	</span>
-	
-</div>
-<div class="multiselect">
-<select name='usuarios_id[]' multiple='true'>
 
-<%
 
- User.active.each do |user|
-%><option <%=(@usuarios.include?(user.id.to_s) ) ? 'selected="selected"' : ''%> value='<%=user.id%>'><%=user.firstname%> <%=user.lastname%></option>
-<% end
-%>
-</select>
-</div>
 
-</p>
+
+
+
 <% end %>
 
 <%= error_messages_for 'query' %>
@@ -64,7 +98,9 @@ pos_background = (16 * (8 - @gantt.date_from.to_date.cwday ))-1
 					<div class="all">
 						
 						<div id="top">
-							<div class="gantt_hdr" id="top_left"></div>
+							<div class="gantt_hdr" id="top_left">
+&nbsp;
+							</div>
 							<div class="gantt_hdr" id="top_right">
 							
 		<div class="months_per_year">							
@@ -459,17 +495,16 @@ end %>
 		<div class="legend">
 			<span class="hours_graph" title="leyenda">leyenda</span>
 			<div class="timing_graph">
-		        <span class="title"><strong>Timing:</strong></span>
-		        <span class="perfect" title="leyenda">Perfecto</span>
-		        <span class="normal" title="leyenda">En tiempo</span>
-		        <span class="retard" title="leyenda">Retraso</span>
-		        <span class="retard2" title="leyenda">Mucho retraso</span>
-		        <span class="no_time" title="leyenda">Sin Timing</span>
-	       </div>
-			<span class="blue">Del total de horas dedicadas se promedian entro los d&iacute;as totales de la petici&oacute;n y van rellen&aacute;ndose</span>
-			<span class="gray">Una vez pasa el d&iacute;a actual de las peticiones se ponen en gris, y se toma para el c&aacute;lculo de carga como fecha de inicio el d&iacute;a actual</span>
-			<span class="black">Ya se han dedicado m&aacute;s horas de las asignadas</span>
-			
+				<span class="title"><strong>Timing:</strong></span>
+				<span class="perfect" title="leyenda">Perfecto /<br />Perfect</span>
+				<span class="normal" title="leyenda">En tiempo /<br />On time</span>
+				<span class="retard" title="leyenda">Retraso /<br />Delay</span>
+				<span class="retard2" title="leyenda">Mucho retraso /<br />Delay</span>
+				<span class="no_time" title="leyenda">Sin timing /<br />No timing</span>
+			</div>
+			<span class="blue">Tiempo dedicado / Time spent</span>
+			<span class="gray">Pasado / Past</span>
+			<span class="black">Dedicado m&aacute;s tiempo del previsto / Out of time budget</span>
 		</div>
 		<div style="clear:both;"></div>
 		

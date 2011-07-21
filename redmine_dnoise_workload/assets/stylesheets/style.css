@@ -1,8 +1,43 @@
-.controller-work_load #content {overflow:hidden; min-height: 630px;}
-.controller-work_load .all { width:100%; height:650px; overflow:auto; border-right: 2px solid #C0C0C0; z-index: 0; float:left}
+.controller-work_load #content {overflow:hidden; min-height: 630px;  background:url(../images/header_bg.png) repeat-x #fff;}
+
+.controller-work_load .header_content { width:100%; float:left;}
+.controller-work_load .header_content_top { width:100%; float:left;}
+.controller-work_load #top_left {float:left; width:330px;height:54px;background:#eeeeee url(../images/logo_workload.png) no-repeat 30px 30px; position:relative; border-left: 1px solid #C0C0C0;}
+.controller-work_load .header_content_top_left { width:7%; float:left;}
+.controller-work_load .header_content_top_right { width:10%; float:right; min-width:140px;}
+.controller-work_load .header_content_top_right span { width:100px; float:left; font-size:9px; height:30px; margin-top:5px;}
+.controller-work_load .header_content_top_right span p {margin:0; padding:0; float:left;}
+.controller-work_load .header_content_top_right span a {color:#0083D7; font-weight:normal; margin-left:20px; margin-top:3px; float:left;}
+.controller-work_load .header_content_top_right span a:hover {color:#0083D7; font-weight:normal;}
+.controller-work_load .header_content_top_right .logo_dnoise { background:url(../images/logo_dnoise.png) no-repeat left; float:left; width:40px; height:40px;}
+.controller-work_load .header_content_bottom { width:100%; float:left; margin-bottom:20px;  }
+
+.controller-work_load .header_content_bottom_left { width:25%; min-width:280px; float:left; margin-top:10px; height:auto;}
+.controller-work_load .header_content_bottom_left .buttons {float:left; width:auto; margin-left: 4px; margin-bottom:0; margin-top:0; }
+.controller-work_load .header_content_bottom_left label {float:left; width:100%; font-size:11px;}
+.controller-work_load .header_content_bottom_left .calendar {float:left; width:auto; margin-left: 4px; margin-top:15px;}
+.controller-work_load .header_content_bottom_left .calendar span:first-child {float:left;}
+.controller-work_load .header_content_bottom_left .calendar span:first-child p { float:left; margin:0 10px 0 0; padding:3px; color:#8C8C8C; font-weight:bold;}
+.controller-work_load .header_content_bottom_left .calendar input {float:left;}
+.controller-work_load .header_content_bottom_left .calendar span.calendar_icon { background: url("../images/calendar.png") no-repeat scroll 0 0 transparent; cursor: pointer; float: left; margin-left: 10px; margin-top:5px; text-indent: -9999px; width: 20px;}
+
+.controller-work_load .header_content_bottom_center { width:18%; min-width:200px;float:left; margin-top:10px; height:auto;}
+.controller-work_load .header_content_bottom_center label {float:left; width:100%; font-size:11px;}
+.controller-work_load .header_content_bottom_center select {float:left; width:auto; height:80px; font-size:13px;}
+
+.controller-work_load .header_content_bottom_right { width:18%; float:left; margin-top:10px; height:auto;}
+.controller-work_load .header_content_bottom_right label {width:auto; font-size:11px;}
+.controller-work_load .header_content_bottom_right .issues {float:left; width:100%; margin-left: 4px; margin-top:10px; margin-bottom:50px;}
+.controller-work_load .header_content_bottom_right a { background: url("../images/true.png") no-repeat scroll 0 0 transparent;}
+.controller-work_load .header_content_bottom_left .icon {float:left;  font-size: 0.9em; margin-bottom: 1.4em; margin-top: 1.1em;}
+.controller-work_load .header_content_bottom_left .multiselect {float:left; margin-bottom: 1.4em; margin-top: 1em; margin-left:25px;}
+.controller-work_load .header_content_bottom_left .multiselect p {float:left; margin:0 10px 0 0; padding:2px; color:#8C8C8C; font-weight:bold;}
+.controller-work_load .header_content_bottom_left .multiselect select {float:left; margin:0 10px 0 0; padding:3px; font-size: 0.9em; color:#8C8C8C; font-weight:normal;}
+
+.controller-work_load .all { width:100%; height:650px; overflow:auto; border-right: 2px solid #C0C0C0; z-index: 0;}
 .controller-work_load #top {float:left; width:3276px; height:55px; position:relative;}
 .controller-work_load #bottom {float:left; width:3278px; height:auto !important; }
-.controller-work_load #top_left {float:left; width:330px;height:54px;background: #eee; position:relative; border-left: 1px solid #C0C0C0;}
+.controller-work_load #top_left {float:left; width:330px;height:54px;background:#eeeeee url(../images/logo_workload.png) no-repeat 30px 15px; position:relative; border-left: 1px solid #C0C0C0;}
 .controller-work_load #top_right {float:left; width:2943px; height: 54px;background: #eee; position:relative;}
 .controller-work_load #bottom-left { position:relative; float:left; height: auto !important;}
 .controller-work_load .workload { float:left; padding-left:30px; font-size:12px; width:300px; border-left: 1px solid #c0c0c0; border-right: 1px solid #c0c0c0;}
@@ -72,7 +107,7 @@
 
 .controller-work_load .legend {width: 1100px; float:left; height:95px; font-size:12px; color:#666666; height: auto;}
 .controller-work_load .hours_graph { background:url(../images/legend.gif) no-repeat left; float:left; text-indent:-9999px;  width: 39%; height:45px; margin-bottom:15px;}
-.controller-work_load .timing_graph { float:left; width: 56%; height:45px; margin-bottom:15px;}
+.controller-work_load .timing_graph { float:left; width: 56%; height:45px; margin-bottom:30px;}
 .controller-work_load .timing_graph .title { width:100%; float:left; margin-bottom:10px;}
 .controller-work_load .timing_graph .perfect { width:80px; float:left; padding-left:20px; background: url(../images/perfect.png) no-repeat left;}
 .controller-work_load .timing_graph .normal { width:80px; float:left; padding-left:20px; background: url(../images/on_time.png) no-repeat left;}
@@ -82,8 +117,8 @@
 .controller-work_load .tareas {float:left;}
 
 
-.controller-work_load .blue { background:url(../images/tarea9_border.png) no-repeat left; padding-left:40px; float:left; margin-bottom:5px; width:100%;}
-.controller-work_load .gray { background:url(../images/tarea10_border.png) no-repeat left; padding-left:40px; float:left;margin-bottom:5px; width:100%;}
+.controller-work_load .blue { background:url(../images/tarea9_border.png) no-repeat left; padding-left:40px; float:left; margin-bottom:5px; width:20%; min-width:100px;}
+.controller-work_load .gray { background:url(../images/tarea10_border.png) no-repeat left; padding-left:40px; float:left;margin-bottom:5px; width:14%;}
 
 
 .controller-work_load #today { background: #E5352C; position:relative; left:463px; width:3px;}
@@ -91,7 +126,7 @@
 
 .controller-work_load .info_widget { width:245px; background:#FFFFCC; border:1px solid #cccccc; height:auto; position:absolute; margin:17px 28px; padding:7px; display:none; color:#000;}
 .controller-work_load .info_widget .tarea1 {font-size:12px; margin-bottom:3px; width:100%;}
-.controller-work_load .info_widget .tarea1 span strong {background:url(../images/perfect.png) no-repeat left; padding-left:20px;}
+.controller-work_load .info_widget .tarea1 span strong {background:url(../images/perfect.png) no-repeat left; padding-left:20px; color:#000 !important;}
 .controller-work_load .info_widget .tarea2 {font-size:12px; margin-bottom:3px; width:100%;}
 .controller-work_load .info_widget .tarea2 span strong {background:url(../images/on_time.png) no-repeat left; padding-left:20px;}
 .controller-work_load .info_widget .tarea3 {font-size:12px; margin-bottom:3px; width:100%;}
@@ -118,18 +153,6 @@
 
 .controller-work_load form {width:100%; float:left;}
 .controller-work_load .blank {background:transparent !important;}
-
-.controller-work_load .buttons {float:left; width:325px; margin-left: 4px;}
-.controller-work_load .calendar {float:left;  font-size: 0.9em; margin-bottom: 1.4em; margin-top: 1em;}
-.controller-work_load .calendar span:first-child {float:left;}
-.controller-work_load .calendar span:first-child p { float:left; margin:0 10px 0 0; padding:3px; color:#8C8C8C; font-weight:bold;}
-.controller-work_load .calendar input {float:left;}
-.controller-work_load .calendar span.calendar_icon { background: url("../images/calendar.png") no-repeat scroll 0 0 transparent; cursor: pointer; float: left; margin-left: 10px; margin-top:5px; text-indent: -9999px; width: 20px;}
-.controller-work_load .issues {float:left; font-size: 0.9em; margin-bottom: 1.4em; margin-top: 1.4em; margin-left:30px; color:#8C8C8C; font-weight:bold;}
-.controller-work_load .icon {float:left;  font-size: 0.9em; margin-bottom: 1.4em; margin-top: 1.1em;}
-.controller-work_load .multiselect {float:left; margin-bottom: 1.4em; margin-top: 1em; margin-left:25px;}
-.controller-work_load .multiselect p {float:left; margin:0 10px 0 0; padding:2px; color:#8C8C8C; font-weight:bold;}
-.controller-work_load .multiselect select {float:left; margin:0 10px 0 0; padding:3px; font-size: 0.9em; color:#8C8C8C; font-weight:normal;}
 
 /* ESTILOS PARA EL CALENDARIO */
 
@@ -191,7 +214,7 @@
 }
 a.botoncal{
 	margin-left: 5px;
-	background: transparent url(calendario.png) no-repeat;
+	background: transparent url(../images/calendario.png) no-repeat;
 }
 a.botoncal span{
 	display: inline-table;
@@ -200,7 +223,7 @@ a.botoncal span{
 }
 a.botonmessiguiente{
 	float: right;
-	background: transparent url(105.png) no-repeat;
+	background: transparent url(../images/105.png) no-repeat;
 	margin: 5px 5px 0 5px;
 	height:10px;
 	width:15px;
@@ -212,13 +235,13 @@ a.botonmessiguiente span, a.botonmesanterior span, a.botoncambiaano span{
 }
 a.botonmesanterior{
 	float: left;
-	background: transparent url(106.png) no-repeat;
+	background: transparent url(../images/106.png) no-repeat;
 	margin: 5px 5px 0 5px;
 	height:10px;
 	width:15px;
 }
 a.botoncambiaano{
-	background: transparent url(193.png) no-repeat;
+	background: transparent url(../images/193.png) no-repeat;
 	margin: 5px 5px 0 5px;
 	font-size: 0.8em;
 	height:10px;
@@ -246,7 +269,7 @@ a.botoncambiaano{
 }
 a.calencerrar{
 	float: right;
-	background: transparent url(101.png) no-repeat;
+	background: transparent url(../images/101.png) no-repeat;
 	margin: 2px 5px 0 5px;
 	height:10px;
 	width:15px;
@@ -283,7 +306,7 @@ a.calencerrar span{
  
 /* Modificaciones 19/07/2011 */
 
-.controller-work_load .black { background:url(../images/tarea11.png) no-repeat left; padding-left:40px; float:left;width:100%;}
+.controller-work_load .black { background:url(../images/tarea11.png) no-repeat left; padding-left:40px; float:left;width:30%;}
 .controller-work_load .gantt_hdr.month_bg1 { background: #cccccc;}
 .controller-work_load .gantt_hdr.month_bg1 a { color: #ffffff;}
 .controller-work_load .undefined { margin-top:20px !important; float:left; height:auto !important;}
