@@ -31,7 +31,7 @@ pos_background = (16 * (8 - @gantt.date_from.to_date.cwday ))-1
 						        </div>
     						</div>
 							<div class="header_content_bottom">
-								<% form_tag({:controller => 'work_load', :action => 'show', :project_id => @project, :month => params[:month], :year => params[:year], :months => params[:months]}, :method => :get, :id => 'query_form') do %>
+								<% form_tag({:controller => 'work_load', :action => 'show', :project_id => @project, :month => params[:month], :year => params[:year], :months => params[:months]}, :method => :get, :id => 'query_form', :class => 'content_form') do %>
 									<div class="header_content_bottom_left">
 										<div class="buttons">
 											<label>Rango / Range</label>
@@ -223,13 +223,13 @@ end %>
 										sum = 0
 										TimeEntry.find(:all, :conditions => ["issue_id = #{issue.id}"]).each do |h| sum+=h.hours end
 										total_rem_by_user[user.id] = sum
-										calculos[issue.id] = CalculosTareas.new(issue.id, issue.start_date, issue.due_date, issue.estimated_hours, sum, issue.done_ratio, issue.priority_id, @fecha_actual)
+										calculos[issue.id] = CalculosTareas.new(issue.id, issue.start_date, issue.due_date, issue.estimated_hours, sum, issue.done_ratio, issue.priority_id, @fecha_actual, @utils.issue_is_parent(issue) )
 										workload_by_user[user.id].push(calculos[issue.id].dias_y_time_restantes)
 										len = 37 - ( issue.id.to_s.length - 1 )
 										if (params[:show_issues] == "1") then %>
 									
 										<div class="user_each_hours" id="_<%=issue.id%>">
-										<span class="tarea<%=calculos[issue.id].getTiming()%>"><a href="/issues/<%=issue.id%>" title="nombre de la tarea relativa a #<%=issue.id%>" class="tareas">#<%=issue.id%></a>&nbsp;<%=(issue.subject.length > len ) ? issue.subject[0, len] : issue.subject%></span>
+										<span class="<%= (@utils.issue_is_parent(issue)) ? 'tarea5' : "tarea#{calculos[issue.id].getTiming()}" %>"><a href="/issues/<%=issue.id%>" title="#<%=issue.id%>" class="tareas">#<%=issue.id%></a>&nbsp;<%=(issue.subject.length > len ) ? issue.subject[0, len] : issue.subject%></span>
 										<div class="info_widget">
 															<div class="proyecto">
 																<span><strong><%=Project.find(issue.project_id).name%></strong></span>				
@@ -501,6 +501,7 @@ end %>
 				<span class="retard" title="leyenda">Retraso /<br />Delay</span>
 				<span class="retard2" title="leyenda">Mucho retraso /<br />Delay</span>
 				<span class="no_time" title="leyenda">Sin timing /<br />No timing</span>
+				<span class="father" title="leyenda">Tarea Padre (no suma) /<br />Parent task (does not add up)</span>
 			</div>
 			<span class="blue">Tiempo dedicado / Time spent</span>
 			<span class="gray">Pasado / Past</span>

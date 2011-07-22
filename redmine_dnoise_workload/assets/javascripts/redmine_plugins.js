@@ -65,24 +65,16 @@ jQuery(".user").each(function(i){
 jQuery(".user_each_hours").mouseenter(function(event) {
 	jQuery(this).css('font-weight', 'bold');
 	var id_tarea = jQuery(this).attr('id');
-	jQuery('.workload').filter('.tarea').filter('.'+id_tarea).each(function(){
-		jQuery(this).css('margin-bottom', '1px');
-		jQuery(this).css('padding-top', '1px');
-		jQuery(this).css('border', '1px solid #ccc');
-		jQuery(this).css('background', '#ebebec');
-		
-	});
+	var i = jQuery('.workload.tarea.'+id_tarea);
+	i.css({'margin-bottom':'1px','padding-top' : '1px', 'border': '1px solid #ccc','background': '#ebebec' });
+
 });
 
 jQuery(".user_each_hours").mouseleave(function() {
 	jQuery(this).css('font-weight', 'normal');
 	var id_tarea = jQuery(this).attr('id');
-	jQuery('.workload').filter('.tarea').filter('.'+id_tarea).each(function(){
-		jQuery(this).css('margin-bottom', '2px');
-		jQuery(this).css('padding-top', '2px');
-		jQuery(this).css('border', '0px solid #ccc');
-		jQuery(this).css('background', 'transparent');
-	});
+	var i = jQuery('.workload.tarea.'+id_tarea);
+	i.css( { 'margin-bottom' : '2px', 'padding-top' : '2px', 'border' : '0px solid #ccc', 'background' : 'transparent' } );
 });
 
  	

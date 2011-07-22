@@ -2,12 +2,13 @@ class CalculosTareas
   attr_accessor :id, :finicio, :ffin, :factual, :fcierre, :hasignadas, :hdedicadas, :realizado, :priority, :duracion_tarea, :dias_restantes, :percent_dedicado, :eficacia_actual, :horas_dias, :difftiempo, :diffhoras, :hrestantes, :hdias_restantes, :start_date, :horas_dias_realizadas, :dias_trabajados, :dias_y_time_restantes,:percent_dias_dedicado, :percent_horas_dedicado, :dias_trabajados_virtuales
   @datetools = nil
   
-  def initialize(id, finicio, ffin, hasignadas, hdedicadas, realizado, priority, factual = 0)
+  def initialize(id, finicio, ffin, hasignadas, hdedicadas, realizado, priority, factual = 0, parent = false)
     @datetools = DateTools.new
     @id = id
     @finicio = finicio.to_date.strftime("%Y-%m-%d")
     @ffin = ffin.to_date.strftime("%Y-%m-%d")
     @factual = (factual == 0 ) ? DateTime.now.strftime("%Y-%m-%d") : factual.to_date.strftime("%Y-%m-%d")
+    @parent = parent
     
     if (@finicio.to_time > @factual.to_time ) then
       @start_date = @finicio
@@ -35,6 +36,7 @@ class CalculosTareas
     
     @dias_azules = {}
     @dias_grises = {}
+    @dias_restar = {}
     @hdias_restantes = @datetools.stimated_days(@hrestantes, @dias_restantes);
     if @dias_trabajados_virtuales > 0 then
       #@hdias_restantes = @datetools.stimated_days(@hrestantes, @dias_restantes - @dias_trabajados_virtuales + 1);
@@ -177,7 +179,9 @@ class CalculosTareas
           if @dias_azules.length > 0  && @dias_azules.include?(dia) then
             return '_a'
           end
-         
+          if(@dias_restar.include?(dia))then
+            return (dia.to_time < @factual.to_time ) ? @dias_restar[dia].round : ( @dias_restar[dia].round == 0 ) ? 1 : ( @dias_restar[dia].round > 8 ) ? 8 : @dias_restar[dia].round
+          end
           if(@dias_y_time_restantes.include?(dia))then
             return (dia.to_time < @factual.to_time ) ? @dias_y_time_restantes[dia].round : ( @dias_y_time_restantes[dia].round == 0 ) ? 1 : ( @dias_y_time_restantes[dia].round > 8 ) ? 8 : @dias_y_time_restantes[dia].round
           end
@@ -194,7 +198,10 @@ class CalculosTareas
         day = @datetools.add_commercial_days(start_date, i)
         if( day.to_time >= @finicio.to_time && day.to_time <= @ffin.to_time && horas_al_dia > 0 ) then
           #dias_y_time[day] = (@dias_azules.include?(day) ) ? 0 : horas_al_dia
-          dias_y_time[day] = horas_al_dia
+          dias_y_time[day] = (@parent == false) ? horas_al_dia : 0 
+          if @parent == true then
+            @dias_restar[day] = horas_al_dia
+          end
         end
        }
       return dias_y_time
